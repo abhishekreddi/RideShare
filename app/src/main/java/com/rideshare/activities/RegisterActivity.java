@@ -138,7 +138,7 @@ public class RegisterActivity extends AppCompatActivity implements EasyPermissio
 
     private void uploadImageToServer() {
         pd = new ProgressDialog(RegisterActivity.this);
-        pd.setTitle("Loading");
+        pd.setTitle("Loading...");
         pd.show();
         Map<String, String> map = new HashMap<>();
         map.put("name", et_name.getText().toString());
@@ -162,7 +162,7 @@ public class RegisterActivity extends AppCompatActivity implements EasyPermissio
             @Override
             public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
                 pd.dismiss();
-                Toast.makeText(RegisterActivity.this, "Registered successfully. ", Toast.LENGTH_LONG).show();
+                Toast.makeText(RegisterActivity.this, "Registeration successfully done.. ", Toast.LENGTH_LONG).show();
                 finish();
             }
 
