@@ -87,6 +87,7 @@ public class RegisterActivity extends AppCompatActivity implements EasyPermissio
             @Override
             public void onClick(View v) {
                 //startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                //password length
                 if(et_name.getText().toString().isEmpty()){
                     Toast.makeText(RegisterActivity.this, "Please Enter Valid Username", Toast.LENGTH_SHORT).show();
                     return;
