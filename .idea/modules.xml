@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/RideSharesecondcommit.iml" filepath="$PROJECT_DIR$/.idea/RideSharesecondcommit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/RideShare.iml" filepath="$PROJECT_DIR$/.idea/modules/RideShare.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/RideShare.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/RideShare.app.iml" />
     </modules>
   </component>
 </project>
