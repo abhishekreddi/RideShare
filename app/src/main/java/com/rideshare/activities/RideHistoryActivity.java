@@ -32,12 +32,7 @@ public class RideHistoryActivity extends AppCompatActivity {
         list_view=(ListView)findViewById(R.id.list_view);
 
         ridesListPojo=new ArrayList<>();
-        ridesListPojo.add(new RidesListPojo("ABC","3","100","Available"));
-        ridesListPojo.add(new RidesListPojo("ABC","3","100","Available"));
-        ridesListPojo.add(new RidesListPojo("ABC","3","100","Available"));
-        ridesListPojo.add(new RidesListPojo("ABC","3","100","Not Available"));
-        ridesListPojo.add(new RidesListPojo("ABC","3","100","Available"));
-        ridesListPojo.add(new RidesListPojo("ABC","3","100","Available"));
+
 
         rideHistoryAdapter=new RideHistoryAdapter(ridesListPojo,this);
         list_view.setAdapter(rideHistoryAdapter);
