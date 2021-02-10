@@ -165,42 +165,7 @@ public class UserDashBoardActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
 
-    private void PostaRide() {
-        String from = spinFrom.getSelectedItem().toString();
-        String to = SpinTo.getSelectedItem().toString();
-        String noofseats = et_no_of_seats.getText().toString();
-        String date = tv_date.getText().toString();
-        String time = tv_time.getText().toString();
-        String amount = et_amount.getText().toString();
 
-        progressDialog = new ProgressDialog(UserDashBoardActivity.this);
-        progressDialog.setMessage("Loading....");
-        progressDialog.show();
-
-        ApiService service = RetroClient.getRetrofitInstance().create(ApiService.class);
-        Call<ResponseData> call = service.postaride(from, to, carId, noofseats, date, time, amount, session);
-
-        call.enqueue(new Callback<ResponseData>() {
-            @Override
-            public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
-                progressDialog.dismiss();
-                if (response.body().status.equals("true")) {
-                    Toast.makeText(UserDashBoardActivity.this, response.body().message, Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(UserDashBoardActivity.this, UserDashBoardActivity.class));
-                    finish();
-                } else {
-                    Toast.makeText(UserDashBoardActivity.this, response.body().message, Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseData> call, Throwable t) {
-                progressDialog.dismiss();
-                Toast.makeText(UserDashBoardActivity.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }
 
     private void navigationView() {
         dl = (DrawerLayout) findViewById(R.id.activity_main);
