@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/RideShare.iml" filepath="$PROJECT_DIR$/.idea/modules/RideShare.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/RideShare.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/RideShare.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/RideSharelocal1.RideShare.iml" filepath="$PROJECT_DIR$/.idea/modules/RideSharelocal1.RideShare.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/RideSharelocal1.RideShare.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/RideSharelocal1.RideShare.app.iml" />
     </modules>
   </component>
 </project>
