@@ -94,7 +94,7 @@ public class PostaRideActivity extends AppCompatActivity {
         progressDialog.show();
 
         ApiService service = RetroClient.getRetrofitInstance().create(ApiService.class);
-        Call<ResponseData> call = service.postaride(from,to,"typeofvehicle",noofseats,amount,vehicleID);
+        Call<ResponseData> call = service.postaride(from,to,"typeofvehicle",noofseats,amount,vehicleID,"","");
 
         call.enqueue(new Callback<ResponseData>() {
             @Override
