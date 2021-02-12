@@ -4,7 +4,6 @@
     <string-array name="login">
 
 
-
         <item>Select Role</item>
         <item>Driver</item>
         <item>Admin</item>
@@ -15,6 +14,18 @@
         <item>Benz</item>
         <item>Audi</item>
         <item>Jaguar</item>
+    </string-array>
+
+    <string-array name="from">
+        <item>Select Starting Point</item>
+        <item>Xyz</item>
+        <item>Abc</item>
+    </string-array>
+
+    <string-array name="to">
+        <item>Choose Destination</item>
+        <item>Pqr</item>
+        <item>Tqr</item>
     </string-array>
 
     <string-array name="noOfSeats">
