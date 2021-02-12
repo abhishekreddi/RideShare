@@ -9,9 +9,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.rideshare.R;
+import com.rideshare.adapters.CarDetailsAdapter;
 import com.rideshare.adapters.StudentAvailableRidesAdapter;
 import com.rideshare.api.ApiService;
 import com.rideshare.api.RetroClient;
+import com.rideshare.models.CarDetailsPojo;
 import com.rideshare.models.RidesListPojo;
 
 import java.util.ArrayList;
@@ -55,10 +57,10 @@ public class StudentAvailableRidesActivity extends AppCompatActivity {
             public void onResponse(Call<List<RidesListPojo>> call, Response<List<RidesListPojo>> response) {
                 progressDialog.dismiss();
                 if(response.body()==null){
-                    Toast.makeText(StudentAvailableRidesActivity.this,"No data found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(StudentAvailableRidesActivity.this,"No data found",Toast.LENGTH_SHORT).show();
                 }else {
                     ridesListPojo=response.body();
-                    studentAvailableRidesAdapter =new StudentAvailableRidesAdapter(ridesListPojo, StudentAvailableRidesActivity.this);
+                    studentAvailableRidesAdapter =new StudentAvailableRidesAdapter(ridesListPojo,StudentAvailableRidesActivity.this);
                     list_view.setAdapter(studentAvailableRidesAdapter);
 
                 }
@@ -70,6 +72,14 @@ public class StudentAvailableRidesActivity extends AppCompatActivity {
             }
         });
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
