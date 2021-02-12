@@ -40,6 +40,7 @@ public class RidesListPojo {
     @SerializedName("tim")
     public String tim;
 
+
     public String getCid() {
         return cid;
     }

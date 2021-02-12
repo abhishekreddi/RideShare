@@ -31,13 +31,15 @@ public class RidesListActivity extends AppCompatActivity {
 
         list_view=(ListView)findViewById(R.id.list_view);
 
+        //DATABASE CONNECTION
+/*
         ridesListPojo=new ArrayList<>();
         ridesListPojo.add(new RidesListPojo("ABC","3","100","Available"));
         ridesListPojo.add(new RidesListPojo("ABC","3","100","Available"));
         ridesListPojo.add(new RidesListPojo("ABC","3","100","Available"));
         ridesListPojo.add(new RidesListPojo("ABC","3","100","Not Available"));
         ridesListPojo.add(new RidesListPojo("ABC","3","100","Available"));
-        ridesListPojo.add(new RidesListPojo("ABC","3","100","Available"));
+        ridesListPojo.add(new RidesListPojo("ABC","3","100","Available"));  */
 
         ridersListAdapter=new RidersListAdapter(ridesListPojo,this);
         list_view.setAdapter(ridersListAdapter);
