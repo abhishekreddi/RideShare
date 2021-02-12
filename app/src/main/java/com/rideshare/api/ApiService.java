@@ -5,6 +5,7 @@ package com.rideshare.api;
 import com.rideshare.models.CarDetailsPojo;
 import com.rideshare.models.EditProfilePojo;
 import com.rideshare.models.ResponseData;
+import com.rideshare.models.RidesListPojo;
 
 import java.util.List;
 import java.util.Map;
@@ -61,23 +62,32 @@ public interface ApiService {
             @Query("password") String password);
 
 
-    @GET("rideshare/user_registration.php")
+    @GET("rideshare/postride.php")
     Call<ResponseData> postaride(
-            @Query("from") String name,
-            @Query("to") String phonenumber,
-            @Query("typeofvehicle") String email,
-            @Query("noofseats") String username,
+            @Query("source") String source,
+            @Query("destination") String destination,
+            @Query("cid") String cid,
+            @Query("seats") String seats,
+            @Query("dat") String dat,
+            @Query("tim") String tim,
             @Query("amount") String amount,
-            @Query("vehicleid") String vehicleid);
+            @Query("email") String email);
+
+    @GET("rideshare/editcar.php")
+    Call<ResponseData> updateCarDetails(
+            @Query("cname") String cname,
+            @Query("email") String email,
+            @Query("seats") String seats,
+            @Query("color") String color,
+            @Query("cplate") String cplate);
 
     @GET("rideshare/forgotPassword.php")
-    Call<ResponseData> forgotPassword
-            (
+    Call<ResponseData> forgotPassword(@Query("emailid") String emailid);
 
-                    @Query("emailid") String emailid
-            );
-
+    @GET("rideshare/deletecar.php")
+    Call<ResponseData> deleteCar (@Query("cid") String cid);
 
 
-
+    @GET("rideshare/getride.php")
+    Call<List<RidesListPojo>> getAvailableRides();
 }
