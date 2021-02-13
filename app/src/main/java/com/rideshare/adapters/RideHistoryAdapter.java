@@ -45,7 +45,7 @@ public class RideHistoryAdapter extends BaseAdapter {
     @Override
     public View getView(final int pos, View view, ViewGroup viewGroup) {
         LayoutInflater obj1 = (LayoutInflater) cnt.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View obj2 = obj1.inflate(R.layout.list_rider_history_list, null);
+        View obj2 = obj1.inflate(R.layout .list_rider_history_list, null);
 
         TextView tv_vahicle = (TextView) obj2.findViewById(R.id.tv_vahicle);
         tv_vahicle.setText("Vehicle : " + ar.get(pos).getSeats());
