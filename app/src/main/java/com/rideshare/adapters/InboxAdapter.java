@@ -79,7 +79,11 @@ public class InboxAdapter extends BaseAdapter {
         TextView tvAmount = (TextView) obj2.findViewById(R.id.tvAmount);
         tvAmount.setText("Amount : " +  inboxPojos.get(pos).getAmount()+"$");
 
-       
+        TextView tvMessage = (TextView) obj2.findViewById(R.id.tvMessage);
+        tvMessage.setText("Message : " +  inboxPojos.get(pos).getMsg());
+
+        TextView tvStatus = (TextView) obj2.findViewById(R.id.tvStatus);
+        tvStatus.setText("Status : " +  inboxPojos.get(pos).getStatus());
 
         Button btnConfirmed=(Button)obj2.findViewById(R.id.btnConfirmed);
         btnConfirmed.setOnClickListener(new View.OnClickListener() {
