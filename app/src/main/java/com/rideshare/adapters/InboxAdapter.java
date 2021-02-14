@@ -129,7 +129,11 @@ public class InboxAdapter extends BaseAdapter {
 
                 }
             }
-
+            @Override
+            public void onFailure(Call<ResponseData> call, Throwable t) {
+                progressDialog.dismiss();
+                Toast.makeText(cnt, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+            }
            
         });
     }
