@@ -57,7 +57,10 @@ public class MyRidesAdapter extends BaseAdapter {
         View obj2 = obj1.inflate(R.layout.adapter_ride_history, null);
 
         TextView tvName = (TextView) obj2.findViewById(R.id.tvName);
-        tvName.setText("Car Name  :"+mycardetails.get(pos).getCname())
+        tvName.setText("Car Name  :"+mycardetails.get(pos).getCname());
+
+        TextView tvColor = (TextView) obj2.findViewById(R.id.tvColor);
+        tvColor.setText("Car Color  :"+mycardetails.get(pos).getColor());
 
 
         TextView TvCplate = (TextView) obj2.findViewById(R.id.TvCplate);
@@ -73,6 +76,7 @@ public class MyRidesAdapter extends BaseAdapter {
 
                 Intent intent=new Intent(cnt, EditMyCarDetailsActivity.class);
                 intent.putExtra("carname",mycardetails.get(pos).getCname());
+                intent.putExtra("carcolour",mycardetails.get(pos).getColor());
                 intent.putExtra("numberplate",mycardetails.get(pos).getCplate());
                 intent.putExtra("noofseats",mycardetails.get(pos).getSeats());
                 intent.putExtra("carimage",mycardetails.get(pos).getPhoto());
@@ -106,15 +110,19 @@ public class MyRidesAdapter extends BaseAdapter {
             public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
                 progressDialog.dismiss();
                 if(response.body()==null){
-                    Toast.makeText(cnt,"Server issue", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(cnt,"Server issue",Toast.LENGTH_SHORT).show();
                 }else {
                     Intent intent=new Intent(cnt, CardetailsActivity.class);
                     cnt.startActivity(intent);
-                    Toast.makeText(cnt," Deleted successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(cnt," Deleted successfully",Toast.LENGTH_SHORT).show();
 
                 }
             }
-
+            @Override
+            public void onFailure(Call<ResponseData> call, Throwable t) {
+                progressDialog.dismiss();
+                Toast.makeText(cnt, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }
