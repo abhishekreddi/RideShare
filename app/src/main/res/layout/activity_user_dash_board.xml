@@ -6,7 +6,8 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F7F7">
+
+    android:background="@drawable/bggg">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,6 +19,7 @@
             tools:context=".activities.MainActivity">
 
             <LinearLayout
+                android:visibility="gone"
                 android:id="@+id/ll"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
@@ -60,55 +62,6 @@
                 android:layout_height="match_parent">
 
 
-
-                <!-- <TextView
-                     android:id="@+id/tv_from"
-                     android:text="From"
-                     android:textSize="16dp"
-                     android:layout_marginTop="20dp"
-                     android:layout_gravity="left"
-                     android:layout_marginLeft="30dp"
-                     android:textColor="#111111"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content" />
-
-
-                 <EditText
-                     android:id="@+id/et_from"
-                     android:hint="From"
-                     android:singleLine="true"
-                     android:padding="9dp"
-                     android:background="@drawable/edittext_reg_fields"
-                     android:layout_marginRight="30dp"
-                     android:layout_marginLeft="30dp"
-                     android:layout_marginTop="10dp"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content" />
-
-
-                 <TextView
-                     android:id="@+id/tv_to"
-                     android:text="To"
-                     android:textSize="16dp"
-                     android:layout_marginTop="20dp"
-                     android:layout_gravity="left"
-                     android:layout_marginLeft="30dp"
-                     android:textColor="#111111"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content" />
-
-
-                 <EditText
-                     android:id="@+id/et_to"
-                     android:hint="To"
-                     android:singleLine="true"
-                     android:padding="9dp"
-                     android:background="@drawable/edittext_reg_fields"
-                     android:layout_marginRight="30dp"
-                     android:layout_marginLeft="30dp"
-                     android:layout_marginTop="10dp"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content" />-->
 
                 <TextView
                     android:text="From"
@@ -183,6 +136,7 @@
                     android:id="@+id/spinTypeofVehicle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="@dimen/_4sdp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginRight="30dp"
@@ -297,8 +251,8 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginLeft="70dp"
                     android:layout_marginRight="70dp"
-                    android:background="@drawable/button1_rounded"
-                    android:textColor="#000"
+                    android:background="@drawable/trans"
+                    android:textColor="#fff"
                     android:textStyle="bold"
                     android:textAllCaps="false"
                     android:layout_width="match_parent"
@@ -319,7 +273,7 @@
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:menu="@menu/user_navigetion"
+        app:menu="@menu/navigetion"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
         android:id="@+id/nv">
