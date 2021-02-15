@@ -226,7 +226,7 @@ public class UserDashBoardActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 switch (id) {
                     case R.id.myrides:
-                        Intent intent = new Intent(getApplicationContext(), MyPostRidesAActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MyPostRidesActivity.class);
                         startActivity(intent);
                         break;
                     case R.id.ride_history:
