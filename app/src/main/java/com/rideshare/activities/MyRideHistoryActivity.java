@@ -2,19 +2,26 @@ package com.rideshare.activities;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.rideshare.R;
 import com.rideshare.Utils;
+import com.rideshare.adapters.CarDetailsAdapter;
+import com.rideshare.adapters.MyRidesAdapter;
 import com.rideshare.adapters.RideHistoryAdapter;
 import com.rideshare.api.ApiService;
 import com.rideshare.api.RetroClient;
+import com.rideshare.models.CarDetailsPojo;
 import com.rideshare.models.MyRideHistoryPojo;
 
 import java.util.ArrayList;
@@ -43,7 +50,7 @@ public class MyRideHistoryActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Ride History");
         getSupportActionBar().setHomeButtonEnabled(true);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         list_view=(ListView)findViewById(R.id.list_view);
 
@@ -63,7 +70,13 @@ public class MyRideHistoryActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<MyRideHistoryPojo>> call, Response<List<MyRideHistoryPojo>> response) {
                 progressDialog.dismiss();
+                if(response.body()==null){
+                    Toast.makeText(MyRideHistoryActivity.this,"No data found",Toast.LENGTH_SHORT).show();
+                }else {
+                    myRideHistoryPojo = response.body();
+                    list_view.setAdapter(new RideHistoryAdapter(myRideHistoryPojo, MyRideHistoryActivity.this));
 
+                }
             }
             @Override
             public void onFailure(Call<List<MyRideHistoryPojo>> call, Throwable t) {

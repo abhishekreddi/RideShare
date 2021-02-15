@@ -19,7 +19,6 @@
         <activity android:name=".activities.CardetailsActivity" />
         <activity android:name=".activities.ForgotPasswordActivity" />
         <activity android:name=".activities.EditProfileActivity" />
-        <activity android:name=".activities.RideHistoryActivity" />
         <activity android:name=".activities.PostaRideActivity" />
         <activity android:name=".activities.RideConfirmationActivity" />
         <activity android:name=".activities.RidesListActivity" />
