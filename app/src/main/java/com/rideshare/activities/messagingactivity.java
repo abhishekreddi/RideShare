@@ -73,5 +73,23 @@ Button send;
 //        pd.setTitle("Please wait,Data is being loading.");
 //        pd.show();
 
+        messagesadapter=new messagesadapter(msg,frm,messagingactivity.this);
+        recyclerView.setAdapter(messagesadapter);
+
+        r =new Runnable() {
+            @Override
+            public void run() {
+                h.postDelayed(r,10000);
+                getmessages();
+
+
+            }
+        };
+
+        h.post(r);
+
+
+    }
+
 
 }
