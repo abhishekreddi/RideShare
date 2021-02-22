@@ -1,5 +1,12 @@
 package com.rideshare.activities;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
@@ -23,13 +30,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.rideshare.R;
@@ -104,7 +104,7 @@ public class UserDashBoardActivity extends AppCompatActivity {
 
         getCarNames();
 
-
+/*
         btnStudent.setOnTouchListener(new View.OnTouchListener() {
 
             @Override
@@ -114,12 +114,11 @@ public class UserDashBoardActivity extends AppCompatActivity {
                     btnStudent.getBackground().setColorFilter(new LightingColorFilter(0x000, 0xFFAA0000));
 
 
-                }
-                else if (event.getAction() == MotionEvent.ACTION_UP) {
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     // set to normal color
 
                     btnStudent.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, 0xFFAA0000));
-                    startActivity(new Intent(UserDashBoardActivity.this,StudentDashboardActivity.class));
+                    startActivity(new Intent(UserDashBoardActivity.this, StudentDashboardActivity.class));
 
 
                 }
@@ -134,8 +133,7 @@ public class UserDashBoardActivity extends AppCompatActivity {
                     // change color
                     btnDriver.getBackground().setColorFilter(new LightingColorFilter(0x000, 0xFFAA0000));
 
-                }
-                else if (event.getAction() == MotionEvent.ACTION_UP) {
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     // set to normal color
                     btnDriver.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, 0xFFAA0000));
 
@@ -143,7 +141,7 @@ public class UserDashBoardActivity extends AppCompatActivity {
 
                 return true;
             }
-        });
+        });*/
 
         btnDriver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,6 +156,19 @@ public class UserDashBoardActivity extends AppCompatActivity {
         btn_post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(spinFrom.getSelectedItem().toString().equals("Select From")){
+                    Toast.makeText(UserDashBoardActivity.this, "Please Select Source", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(SpinTo.getSelectedItem().toString().equals("Choose To")){
+                    Toast.makeText(UserDashBoardActivity.this, "Please Select Destination", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (spinFrom.getSelectedItem().toString().equals(SpinTo.getSelectedItem().toString())){
+                    Toast.makeText(UserDashBoardActivity.this, "From and To Locations are shoud not be the same", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 PostaRide();
             }
         });
@@ -178,7 +189,7 @@ public class UserDashBoardActivity extends AppCompatActivity {
         progressDialog.show();
 
         ApiService service = RetroClient.getRetrofitInstance().create(ApiService.class);
-        Call<ResponseData> call = service.postaride(from, to, noofseats, date, time, amount, session,"");
+        Call<ResponseData> call = service.postaride(from, to, carId, noofseats, date, time, amount, session);
 
         call.enqueue(new Callback<ResponseData>() {
             @Override
@@ -215,11 +226,11 @@ public class UserDashBoardActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 switch (id) {
                     case R.id.myrides:
-                        Intent intent = new Intent(getApplicationContext(), RidesListActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MyPostRidesActivity.class);
                         startActivity(intent);
                         break;
                     case R.id.ride_history:
-                        Intent intent1 = new Intent(getApplicationContext(), RideHistoryActivity.class);
+                        Intent intent1 = new Intent(getApplicationContext(), MyRideHistoryActivity.class);
                         startActivity(intent1);
                         break;
 
@@ -232,6 +243,11 @@ public class UserDashBoardActivity extends AppCompatActivity {
                     case R.id.edit_profile:
                         Intent view_jobs = new Intent(getApplicationContext(), EditProfileActivity.class);
                         startActivity(view_jobs);
+                        break;
+
+                    case R.id.ride_inbox:
+                        Intent inbox = new Intent(getApplicationContext(), InboxActivity.class);
+                        startActivity(inbox);
                         break;
 
                     case R.id.logout:
@@ -296,7 +312,7 @@ public class UserDashBoardActivity extends AppCompatActivity {
                             spinTypeofVehicle.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                                    Toast.makeText(UserDashBoardActivity.this, "" + cid.get(spinTypeofVehicle.getSelectedItemPosition()), Toast.LENGTH_SHORT).show();
+                                    // Toast.makeText(UserDashBoardActivity.this, "" + cid.get(spinTypeofVehicle.getSelectedItemPosition()), Toast.LENGTH_SHORT).show();
 
                                     carId = cid.get(spinTypeofVehicle.getSelectedItemPosition());
 
@@ -326,6 +342,7 @@ public class UserDashBoardActivity extends AppCompatActivity {
         mMonth = c.get(Calendar.MONTH);
         mDay = c.get(Calendar.DAY_OF_MONTH);
 
+        //datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                 new DatePickerDialog.OnDateSetListener() {
@@ -341,6 +358,8 @@ public class UserDashBoardActivity extends AppCompatActivity {
 
                     }
                 }, mYear, mMonth, mDay);
+        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+
         datePickerDialog.show();
     }
 
