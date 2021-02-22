@@ -64,7 +64,7 @@ public class InboxAdapter extends BaseAdapter {
         View obj2 = obj1.inflate(R.layout.adapter_inbox, null);
 
 
-       TextView tvFrom = (TextView) obj2.findViewById(R.id.tvFrom);
+        TextView tvFrom = (TextView) obj2.findViewById(R.id.tvFrom);
         tvFrom.setText("From : " + inboxPojos.get(pos).getSource());
 
         TextView tvTo = (TextView) obj2.findViewById(R.id.tvTo);
@@ -129,12 +129,12 @@ public class InboxAdapter extends BaseAdapter {
 
                 }
             }
+
             @Override
             public void onFailure(Call<ResponseData> call, Throwable t) {
                 progressDialog.dismiss();
                 Toast.makeText(cnt, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
             }
-           
         });
     }
 
