@@ -9,11 +9,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.rideshare.R;
-import com.rideshare.adapters.CarDetailsAdapter;
-import com.rideshare.adapters.StudentAvailableRidesAdapter;
 import com.rideshare.api.ApiService;
 import com.rideshare.api.RetroClient;
-import com.rideshare.models.CarDetailsPojo;
 import com.rideshare.models.RidesListPojo;
 
 import java.util.ArrayList;
