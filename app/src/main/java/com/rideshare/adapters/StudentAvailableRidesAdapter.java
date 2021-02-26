@@ -164,6 +164,29 @@ public class StudentAvailableRidesAdapter extends BaseAdapter {
             }
         });
     }
+    public void driverDetails(String name,String email,final String phoneno){
+        LayoutInflater inflater = LayoutInflater.from(cnt);
+        View view = inflater.inflate(R.layout.alert_driver_info, null);
+
+        Button btnOk = (Button) view.findViewById(R.id.btnOk);
+
+        TextView tvName=(TextView)view.findViewById(R.id.tvName);
+        TextView tvEmail=(TextView)view.findViewById(R.id.tvEmail);
+        TextView tvPhoneno=(TextView)view.findViewById(R.id.tvPhoneno);
+
+        ImageView driver_call=(ImageView)view.findViewById(R.id.driver_call);
+        driver_call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phoneno));
+                cnt.startActivity(intent);
+            }
+        });
+
+        tvName.setText("Driver Name:  "+name);
+        tvEmail.setText("Driver Email:  "+email);
+        tvPhoneno.setText("Driver Phone:  "+phoneno);
+
 
 
         final AlertDialog alertDialog = new AlertDialog.Builder(cnt).setView(view).create();
@@ -179,23 +202,5 @@ public class StudentAvailableRidesAdapter extends BaseAdapter {
         window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
         alertDialog.show();
-    }
-
-
-
-    public void rideFilter(String charText)
-    {
-        charText = charText.toLowerCase(Locale.getDefault());
-        availablerides.clear();
-        if (charText.length() == 0) {
-            availablerides.addAll(searchride);
-        } else {
-            for (RidesListPojo wp : searchride) {
-                if (wp.getSource().toLowerCase(Locale.getDefault()).contains(charText)) {
-                    availablerides.add(wp);
-                }
-            }
-        }
-        notifyDataSetChanged();
     }
 }
