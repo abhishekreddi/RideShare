@@ -74,6 +74,7 @@ public class DriverInboxActivity extends AppCompatActivity {
                 }else {
                     inboxPojos=response.body();
                     inboxAdapter =new InboxAdapter(inboxPojos, DriverInboxActivity.this);
+                    list_view.setAdapter(inboxAdapter);
 
                 }
             }
