@@ -85,6 +85,10 @@ public class StudentAvailableRidesAdapter extends BaseAdapter {
         TextView tvTime = (TextView) obj2.findViewById(R.id.tvTime);
         tvTime.setText("Time : " +  availablerides.get(pos).getTim()+"PM");
 
+        TextView tvPrice = (TextView) obj2.findViewById(R.id.tvPrice);
+        tvPrice.setText("Price : " +  availablerides.get(pos).getAmount()+"$");
+
+
         Button btnBook=(Button)obj2.findViewById(R.id.btnBook);
         btnBook.setOnClickListener(new View.OnClickListener() {
             @Override
