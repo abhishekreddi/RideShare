@@ -28,18 +28,18 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class messagingactivity extends AppCompatActivity {
-ApiService apiService;
-String frm;
-String eto;
-String pid="3";
-List<msgs> msg=new ArrayList<msgs>();
+    ApiService apiService;
+    String frm;
+    String eto;
+    String pid="3";
+    List<msgs> msg=new ArrayList<msgs>();
 
-EditText msgtext;
+    EditText msgtext;
     ProgressDialog pd;
     messagesadapter messagesadapter;
-Button send;
+    Button send;
     Runnable r;
-     RecyclerView recyclerView;
+    RecyclerView recyclerView;
     Handler h=new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,5 +91,61 @@ Button send;
 
     }
 
+    public void getmessages(){
+        ApiService service = RetroClient.getRetrofitInstance().create(ApiService.class);
+        Call<List<msgs>> call = service.getchat(frm,eto,getIntent().getStringExtra("rid"));
+        call.enqueue(new Callback<List<msgs>>() {
+            @Override
+            public void onResponse(Call<List<msgs>> call, Response<List<msgs>> response) {
+                if(response.body()==null){
+                    Toast.makeText(messagingactivity.this,"No data found", Toast.LENGTH_SHORT).show();
+                }else {
+                    // pd.dismiss();
+                    Log.d("testtt",response.toString());
+                    if(response.body().size()>0) {
+                        msg.clear();
+                        msg.addAll(response.body());
+                        Log.d("kruthik", msg.toString());
+                        messagesadapter.notifyDataSetChanged();
+                        //messagesadapter.notifyDataSetChanged();
+                        recyclerView.smoothScrollToPosition(msg.size() - 1);
+                    }
+                }
+            }
 
+            @Override
+            public void onFailure(Call<List<msgs>> call, Throwable t) {
+
+            }
+        });
+    }
+    public  void sendMessage(final String frm, final String eto, final String rid) {
+//        pd = new ProgressDialog(getApplicationContext());
+//        pd.setTitle("Please wait, message sending.");
+//        pd.show();
+        ApiService apiService = RetroClient.getRetrofitInstance().create(ApiService.class);
+        Call<ResponseData> call = apiService.msglist(frm,eto,rid,msgtext.getText().toString());
+        call.enqueue(new Callback<ResponseData>() {
+            @Override
+            public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
+                getmessages();
+
+                if (response.body().message.equals("true")) {
+                    // pd.dismiss();
+                    Toast.makeText(messagingactivity.this, response.body().message, Toast.LENGTH_LONG).show();
+                    // Log.i("msg", "" + response.body().message);
+                    msgtext.setText("");
+                    // finish();
+                } else {
+                    Toast.makeText(messagingactivity.this, response.body().message, Toast.LENGTH_LONG).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseData> call, Throwable t) {
+                Log.d("TAG","Response = "+t.toString());
+            }
+        });
+    }
 }
