@@ -48,6 +48,7 @@ public class PostaRideActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_posta_ride);
+        setContentView(R.layout.activity_posta_ride);
 
         getSupportActionBar().setTitle("Post a ride");
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -184,10 +185,12 @@ public class PostaRideActivity extends AppCompatActivity {
                         MONTH = monthOfYear + 1 + "";
                         YEAR = year + "";
 
-                        tv_date.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                        tv_date.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
 
                     }
                 }, mYear, mMonth, mDay);
+        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+
         datePickerDialog.show();
     }
     @Override

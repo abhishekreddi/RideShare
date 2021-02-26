@@ -70,11 +70,13 @@ public class InboxAdapter extends BaseAdapter {
         TextView tvTime = (TextView) obj2.findViewById(R.id.tvTime);
         tvTime.setText("Time : " +  inboxPojos.get(pos).getTim());
 
+
         TextView tvAmount = (TextView) obj2.findViewById(R.id.tvAmount);
         tvAmount.setText("Amount : " +  inboxPojos.get(pos).getAmount()+"$");
 
         TextView tvMessage = (TextView) obj2.findViewById(R.id.tvMessage);
         tvMessage.setText("Message : " +  inboxPojos.get(pos).getMsg());
+
 
         TextView tvStatus = (TextView) obj2.findViewById(R.id.tvStatus);
         tvStatus.setText("Status : " +  inboxPojos.get(pos).getStatus());
@@ -86,7 +88,11 @@ public class InboxAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 if(spStatus.getSelectedItemPosition()==0){
+
                     Toast.makeText(cnt,"Please select status.",Toast.LENGTH_SHORT).show();
+=======
+                    Toast.makeText(cnt,"Please select status.", Toast.LENGTH_SHORT).show();
+
                 }else{
                     updateRideStatus(inboxPojos.get(pos).getBid(),spStatus.getSelectedItem().toString());
                 }
@@ -117,7 +123,9 @@ public class InboxAdapter extends BaseAdapter {
         return obj2;
     }
     ProgressDialog progressDialog;
-    public void updateRideStatus(String ID,String Status) {
+
+    public void updateRideStatus(String ID, String Status) {
+
         progressDialog = new ProgressDialog(cnt);
         progressDialog.setMessage("Loading....");
         progressDialog.show();
@@ -128,6 +136,7 @@ public class InboxAdapter extends BaseAdapter {
             @Override
             public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
                 progressDialog.dismiss();
+
                 if (response.body() == null) {
                     Toast.makeText(cnt, "Server issue", Toast.LENGTH_SHORT).show();
                 } else {
@@ -137,6 +146,9 @@ public class InboxAdapter extends BaseAdapter {
                     Toast.makeText(cnt, " Status Updated successfully", Toast.LENGTH_SHORT).show();
 
                 }
+=======
+
+
             }
 
             @Override
