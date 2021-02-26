@@ -8,148 +8,138 @@
         android:id="@+id/cd_search_ride"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
+        android:layout_margin="10dp"
         app:cardBackgroundColor="#fff"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="4dp"
-        app:cardMaxElevation="4dp">
+        app:cardCornerRadius="2dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true">
+
+        <TextView
+
+            android:id="@+id/ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_13sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="Location"
+            android:textColor="#000" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
 
-            <ImageView
-                android:id="@+id/imageview"
-                android:layout_margin="@dimen/_15sdp"
-                android:layout_alignParentRight="true"
-                android:layout_width="@dimen/_100sdp"
-                android:layout_height="@dimen/_100sdp"/>
 
             <TextView
-                android:id="@+id/tv_vahicle"
+                android:id="@+id/tvFrom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_13sdp"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:text="Vehicle"
-                android:textColor="#000"
-                android:textSize="@dimen/_13sdp" />
-
-
-            <TextView
-                android:id="@+id/tv_from"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_vahicle"
-                android:layout_marginLeft="@dimen/_13sdp"
-                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:fontFamily="@font/poppinsmedium"
                 android:text="From"
-                android:textColor="#000"
-                android:textSize="@dimen/_13sdp" />
+                android:textColor="#000" />
 
 
             <TextView
-                android:id="@+id/tv_to"
-                android:layout_width="match_parent"
+                android:id="@+id/tvTo"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_from"
-                android:layout_marginLeft="@dimen/_13sdp"
-                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:fontFamily="@font/poppinsmedium"
                 android:text="To"
-                android:textColor="#000"
-                android:textSize="@dimen/_13sdp" />
+                android:textColor="#000" />
 
-            <TextView
-                android:id="@+id/tv_color"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_to"
-                android:layout_marginLeft="@dimen/_13sdp"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:text="Color"
-                android:textColor="#000"
-                android:textSize="@dimen/_13sdp" />
 
-            <TextView
-                android:id="@+id/tv_numplate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_color"
-                android:layout_marginLeft="@dimen/_13sdp"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:text="Number Plate"
-                android:textColor="#000"
-                android:textSize="@dimen/_13sdp" />
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/carImage"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_below="@+id/tvTo"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_13sdp"
+                android:src="@drawable/logo"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width=".5dp" />
 
-            <TextView
-                android:id="@+id/tv_seats"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_numplate"
-                android:layout_marginLeft="@dimen/_13sdp"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:text="No of Seats"
-                android:textColor="#000"
-                android:textSize="@dimen/_13sdp" />
+            <!--  <TextView
+                  android:id="@+id/tv_price"
+                  android:text="Price"
+                  android:layout_marginLeft="6dp"
+                  android:layout_alignParentRight="true"
+                  android:layout_marginTop="@dimen/_15sdp"
+                  android:layout_marginRight="@dimen/_13sdp"
+                  android:textColor="#000"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content" />-->
 
 
             <TextView
-                android:id="@+id/tv_date"
+                android:id="@+id/tvDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_seats"
+                android:layout_below="@+id/tvFrom"
                 android:layout_marginLeft="@dimen/_13sdp"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:text="No of Seats"
-                android:textColor="#000"
-                android:textSize="@dimen/_13sdp" />
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/poppinsmedium"
+                android:text="Date"
+                android:textColor="#000" />
+
 
             <TextView
-                android:id="@+id/tv_time"
+                android:id="@+id/tvTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_date"
+                android:layout_below="@+id/tvDate"
                 android:layout_marginLeft="@dimen/_13sdp"
-                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/poppinsmedium"
                 android:text="Time"
-                android:textColor="#000"
-                android:textSize="@dimen/_13sdp" />
+                android:textColor="#000" />
 
 
             <TextView
                 android:id="@+id/tvPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_time"
+                android:layout_below="@+id/tvTime"
                 android:layout_marginLeft="@dimen/_13sdp"
-                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/poppinsmedium"
                 android:text="Price"
-                android:textColor="#000"
-                android:textSize="@dimen/_13sdp" />
+                android:textColor="#000" />
 
-            <TextView
-                android:id="@+id/tvStatus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvPrice"
-                android:layout_marginLeft="@dimen/_13sdp"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:text="Status"
-                android:textColor="#000"
-                android:textSize="@dimen/_13sdp"
-                android:visibility="gone" />
 
             <Button
-                android:id="@+id/btn_book"
+                android:id="@+id/btnBook"
                 android:layout_width="@dimen/_90sdp"
                 android:layout_height="40dp"
-                android:layout_below="@+id/tvStatus"
-                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tvPrice"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_15sdp"
-                android:layout_marginBottom="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
                 android:background="@drawable/button1_rounded"
+                android:fontFamily="@font/poppinsmedium"
                 android:text="Book"
                 android:textAllCaps="false" />
+
+
+
+            <ImageView
+                android:id="@+id/driver_details"
+                android:src="@drawable/ic_baseline_person_pin_24"
+                android:layout_marginTop="@dimen/_10ssp"
+                android:layout_marginRight="@dimen/_25ssp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tvPrice"
+                android:layout_width="@dimen/_30ssp"
+                android:layout_height="@dimen/_30ssp"/>
 
 
         </RelativeLayout>
