@@ -59,12 +59,12 @@ public class AddCarActivity extends AppCompatActivity implements EasyPermissions
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_car);
 
-        getSupportActionBar().setTitle("Ride History");
+        getSupportActionBar().setTitle("Add Car");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         sharedPreferences = getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
-         session = sharedPreferences.getString("uname", "def-val");
+        session = sharedPreferences.getString("uname", "def-val");
 
         spinCarBrand=(Spinner)findViewById(R.id.spinCarBrand);
         SpinCarColour=(Spinner)findViewById(R.id.SpinCarColour);
@@ -85,6 +85,22 @@ public class AddCarActivity extends AppCompatActivity implements EasyPermissions
         btnAddCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(spinCarBrand.getSelectedItem().toString().equals("Select Car Brand")){
+                    Toast.makeText(AddCarActivity.this, "Please select car brand", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(SpinCarColour.getSelectedItem().toString().equals("Choose Car Colour")){
+                    Toast.makeText(AddCarActivity.this, "Please Choose Car Colour", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(spinNoOfSeats.getSelectedItem().toString().equals("No Of Seats")){
+                    Toast.makeText(AddCarActivity.this, "Please coose no of seats", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(etNUmberPlate.getText().toString().isEmpty()){
+                    Toast.makeText(AddCarActivity.this, "Please enter vehicle nuber", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 uploadImageToServer();
 
             }
