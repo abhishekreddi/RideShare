@@ -86,6 +86,31 @@ public class DriverMessageActivity extends AppCompatActivity {
 
 
     }
+    public void getmessages(){
+        ApiService service = RetroClient.getRetrofitInstance().create(ApiService.class);
+        Call<List<msgs>> call = service.getchat(frm,eto,getIntent().getStringExtra("rid"));
+        call.enqueue(new Callback<List<msgs>>() {
+            @Override
+            public void onResponse(Call<List<msgs>> call, Response<List<msgs>> response) {
+                if(response.body()==null){
+                    Toast.makeText(DriverMessageActivity.this,"No data found", Toast.LENGTH_SHORT).show();
+                }else {
+                    // pd.dismiss();
+                    Log.d("testtt",response.toString());
+                    msg = response.body();
+                    lmessagesadapter.data(msg);
+                    //messagesadapter.notifyDataSetChanged();
+                    //    recyclerView.smoothScrollToPosition(msg.size()-1);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<msgs>> call, Throwable t) {
+
+            }
+        });
+    }
 
 
     public  void sendMessage(final String frm, final String eto, final String rid) {
