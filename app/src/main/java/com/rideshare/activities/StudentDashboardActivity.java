@@ -100,7 +100,53 @@ public class StudentDashboardActivity extends AppCompatActivity {
             }
         });
     }
+    private void navigationView() {
+        dl = (DrawerLayout) findViewById(R.id.activity_main);
+        t = new ActionBarDrawerToggle(this, dl, R.string.Open, R.string.Close);
+        dl.addDrawerListener(t);
+        t.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        nv = (NavigationView) findViewById(R.id.nv);
+        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch (id) {
+                    /*case R.id.myrides:
+                        Intent intent = new Intent(getApplicationContext(), MyPostRidesAActivity.class);
+                        startActivity(intent);
+                        break;*/
+                    case R.id.ride_history:
+                        Intent intent1 = new Intent(getApplicationContext(), UserRideHistoryActivity.class);
+                        startActivity(intent1);
+                        break;
 
+
+                    case R.id.edit_profile:
+                        Intent view_jobs = new Intent(getApplicationContext(), EditProfileActivity.class);
+                        startActivity(view_jobs);
+                        break;
+
+                    case R.id.ride_inbox:
+                        Intent inbox = new Intent(getApplicationContext(), UserInboxActivity.class);
+                        startActivity(inbox);
+                        break;
+
+                    case R.id.logout:
+                        Intent logout = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(logout);
+                        finish();
+                        break;
+
+                    default:
+                        return true;
+                }
+                dl.closeDrawer(GravityCompat.START);
+                return true;
+
+            }
+        });
+    }
 
     @Override
     public void onBackPressed() {
