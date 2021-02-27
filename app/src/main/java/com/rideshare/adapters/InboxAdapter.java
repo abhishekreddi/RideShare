@@ -70,6 +70,11 @@ public class InboxAdapter extends BaseAdapter {
         TextView tvTime = (TextView) obj2.findViewById(R.id.tvTime);
         tvTime.setText("Time : " +  inboxPojos.get(pos).getTim());
 
+        TextView tvAmount = (TextView) obj2.findViewById(R.id.tvAmount);
+        tvAmount.setText("Amount : " +  inboxPojos.get(pos).getAmount()+"$");
+
+        TextView tvMessage = (TextView) obj2.findViewById(R.id.tvMessage);
+        tvMessage.setText("Message : " +  inboxPojos.get(pos).getMsg());
 
         TextView tvAmount = (TextView) obj2.findViewById(R.id.tvAmount);
         tvAmount.setText("Amount : " +  inboxPojos.get(pos).getAmount()+"$");
