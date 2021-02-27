@@ -1,10 +1,12 @@
 package com.rideshare.adapters;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.rideshare.R;
 import com.rideshare.Utils;
+import com.rideshare.activities.StudentDashboardActivity;
 import com.rideshare.activities.StudentRideDetailsActivity;
 import com.rideshare.activities.messagingactivity;
 import com.rideshare.api.ApiService;
@@ -73,7 +76,7 @@ public class StudentAvailableRidesAdapter extends BaseAdapter {
         ImageView carImage=(ImageView)obj2.findViewById(R.id.carImage);
         Glide.with(cnt).load(URL+availablerides.get(pos).photo).into(carImage);
 
-       TextView tvFrom = (TextView) obj2.findViewById(R.id.tvFrom);
+        TextView tvFrom = (TextView) obj2.findViewById(R.id.tvFrom);
         tvFrom.setText("From : " + availablerides.get(pos).getSource());
 
         TextView tvTo = (TextView) obj2.findViewById(R.id.tvTo);
@@ -82,12 +85,11 @@ public class StudentAvailableRidesAdapter extends BaseAdapter {
         TextView tvDate = (TextView) obj2.findViewById(R.id.tvDate);
         tvDate.setText("Date : " +  availablerides.get(pos).getDat());
 
-        TextView tvTime = (TextView) obj2.findViewById(R.id.tvTime);
-        tvTime.setText("Time : " +  availablerides.get(pos).getTim()+"PM");
-
         TextView tvPrice = (TextView) obj2.findViewById(R.id.tvPrice);
         tvPrice.setText("Price : " +  availablerides.get(pos).getAmount()+"$");
 
+        TextView tvTime = (TextView) obj2.findViewById(R.id.tvTime);
+        tvTime.setText("Time : " +  availablerides.get(pos).getTim()+"PM");
 
         Button btnBook=(Button)obj2.findViewById(R.id.btnBook);
         btnBook.setOnClickListener(new View.OnClickListener() {
@@ -152,7 +154,7 @@ public class StudentAvailableRidesAdapter extends BaseAdapter {
             public void onResponse(Call<List<EditProfilePojo>> call, Response<List<EditProfilePojo>> response) {
                 progressDialog.dismiss();
                 if(response.body()==null){
-                    Toast.makeText(cnt,"No data found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(cnt,"No data found",Toast.LENGTH_SHORT).show();
                 }else {
                     driverDetails=response.body();
                     EditProfilePojo user1 = driverDetails.get(0);
@@ -192,7 +194,6 @@ public class StudentAvailableRidesAdapter extends BaseAdapter {
         tvPhoneno.setText("Driver Phone:  "+phoneno);
 
 
-
         final AlertDialog alertDialog = new AlertDialog.Builder(cnt).setView(view).create();
 
         btnOk.setOnClickListener(new View.OnClickListener() {
@@ -206,5 +207,23 @@ public class StudentAvailableRidesAdapter extends BaseAdapter {
         window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
         alertDialog.show();
+    }
+
+
+
+    public void rideFilter(String charText)
+    {
+        charText = charText.toLowerCase(Locale.getDefault());
+        availablerides.clear();
+        if (charText.length() == 0) {
+            availablerides.addAll(searchride);
+        } else {
+            for (RidesListPojo wp : searchride) {
+                if (wp.getSource().toLowerCase(Locale.getDefault()).contains(charText)) {
+                    availablerides.add(wp);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 }
