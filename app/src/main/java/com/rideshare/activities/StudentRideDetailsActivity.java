@@ -1,5 +1,7 @@
 package com.rideshare.activities;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -12,8 +14,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.rideshare.R;
 import com.rideshare.Utils;
 import com.rideshare.api.ApiService;
@@ -25,7 +25,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class StudentRideDetailsActivity extends AppCompatActivity {
-    TextView tvFrom,tvTo,tvDate,tvCarname,tvCarColor,tvCarNumPlate,tvCarSeats,tvTime;
+    TextView tvFrom,tvTo,tvDate,tvCarname,tvCarColor,tvCarNumPlate,tvCarSeats,tvTime,tvDrivername;
     EditText etMessage;
     String rideId,Uname,session;
     SharedPreferences sharedPreferences;
@@ -54,6 +54,8 @@ public class StudentRideDetailsActivity extends AppCompatActivity {
         etMessage=(EditText)findViewById(R.id.etMessage);
         rideId=getIntent().getStringExtra("rid");
         Uname=getIntent().getStringExtra("uname");
+        tvDrivername=(TextView)findViewById(R.id.tvDrivername);
+        tvDrivername.setText("Driver Email: "+Uname);
 
         sharedPreferences = getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
         session = sharedPreferences.getString("uname", "def-val");

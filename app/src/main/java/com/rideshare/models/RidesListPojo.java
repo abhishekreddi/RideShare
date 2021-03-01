@@ -40,6 +40,16 @@ public class RidesListPojo {
     @SerializedName("tim")
     public String tim;
 
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    @SerializedName("amount")
+    public String amount;
 
     public String getCid() {
         return cid;

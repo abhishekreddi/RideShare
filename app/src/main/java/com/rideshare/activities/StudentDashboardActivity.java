@@ -121,6 +121,10 @@ public class StudentDashboardActivity extends AppCompatActivity {
                         startActivity(intent1);
                         break;
 
+                    case R.id.ride_chat:
+                        Intent add_car = new Intent(getApplicationContext(), StudentRequestActivity.class);
+                        startActivity(add_car);
+                        break;
 
                     case R.id.edit_profile:
                         Intent view_jobs = new Intent(getApplicationContext(), EditProfileActivity.class);

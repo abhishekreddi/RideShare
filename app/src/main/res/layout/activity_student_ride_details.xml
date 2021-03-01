@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center"
     android:layout_width="match_parent"
+    android:background="@drawable/bggg"
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
@@ -23,13 +24,23 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/tvDrivername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_14ssp"
+                android:layout_marginBottom="@dimen/_2ssp"
+                android:fontFamily="@font/poppinsmedium"
+                android:text="@string/app_name"
+                android:textSize="@dimen/_13sdp" />
+
 
             <TextView
                 android:id="@+id/tvFrom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_15sdp"
-                android:layout_marginTop="20dp"
                 android:layout_marginBottom="@dimen/_2ssp"
                 android:fontFamily="@font/poppinsmedium"
                 android:text="@string/app_name"
@@ -123,6 +134,9 @@
 
 
 
+
+
+
             <EditText
                 android:id="@+id/etMessage"
                 android:layout_width="match_parent"
@@ -136,25 +150,7 @@
                 android:textAllCaps="false"
                 android:hint="Message" />
 
-           <!-- <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tvMessagee"
-                style="@style/TextInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvname"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:background="@android:color/transparent"
-                android:hint="Message"
-                app:boxBackgroundColor="@android:color/transparent">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etMessage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>-->
 
 
 
@@ -163,7 +159,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_20sdp"
-                android:background="@drawable/button1_rounded"
+                android:textColor="#fff"
+                android:background="@drawable/trans"
                 android:text="Make a Request"
                 android:textAllCaps="false" />
         </LinearLayout>

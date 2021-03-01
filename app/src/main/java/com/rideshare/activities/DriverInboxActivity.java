@@ -81,6 +81,7 @@ public class DriverInboxActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<InboxPojo>> call, Throwable t) {
                 progressDialog.dismiss();
+                Toast.makeText(DriverInboxActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
             }
         });
     }
