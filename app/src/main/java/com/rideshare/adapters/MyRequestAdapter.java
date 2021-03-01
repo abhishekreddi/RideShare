@@ -14,6 +14,8 @@ import androidx.cardview.widget.CardView;
 import com.rideshare.R;
 import com.rideshare.Utils;
 import com.rideshare.activities.DriverMessageActivity;
+
+import com.rideshare.models.msgs;
 import com.rideshare.models.msgs;
 
 import java.util.List;
@@ -48,6 +50,23 @@ public class MyRequestAdapter extends BaseAdapter {
     public View getView(final int pos, View view, ViewGroup viewGroup) {
         LayoutInflater obj1 = (LayoutInflater) cnt.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View obj2 = obj1.inflate(R.layout.adapter_my_request, null);
+
+        sharedPreferences = cnt.getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
+        session = sharedPreferences.getString("uname", "def-val");
+
+
+        TextView tv_pid = (TextView) obj2.findViewById(R.id.tv_pid);
+        tv_pid.setText("Property Id :" + ar.get(pos).getRid());
+
+        TextView tv_from = (TextView) obj2.findViewById(R.id.tv_from);
+        tv_from.setText("Me :" + ar.get(pos).getEto());
+
+
+
+        TextView tv_to = (TextView) obj2.findViewById(R.id.tv_to);
+        tv_to.setText("From :" + ar.get(pos).getFrm());
+
+
         CardView my_inbox=(CardView)obj2.findViewById(R.id.my_inbox);
 
         my_inbox.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +76,7 @@ public class MyRequestAdapter extends BaseAdapter {
                 intent.putExtra("rid",ar.get(pos).getRid());
                 intent.putExtra("from",ar.get(pos).getFrm());
                 intent.putExtra("to",ar.get(pos).getEto());
-
+                cnt.startActivity(intent);
 
             }
         });
