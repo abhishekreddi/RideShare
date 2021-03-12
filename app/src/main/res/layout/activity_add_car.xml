@@ -10,6 +10,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        android:background="@drawable/bggg"
         android:layout_height="match_parent"
         tools:context=".activities.SearchrideActivity">
 
@@ -128,8 +129,9 @@
             android:layout_marginTop="30dp"
             android:layout_marginLeft="70dp"
             android:layout_marginRight="70dp"
-            android:background="@drawable/button1_rounded"
+            android:background="@drawable/trans"
             android:text="Upload Car Image"
+            android:textColor="#fff"
             android:textAllCaps="false" />
 
 
@@ -142,8 +144,8 @@
             android:layout_marginTop="30dp"
             android:layout_marginLeft="@dimen/_30sdp"
             android:layout_marginRight="@dimen/_30sdp"
-            android:background="@drawable/button1_rounded"
-            android:textColor="#000"
+            android:background="@drawable/button2_rounded"
+            android:textColor="#fff"
             android:textStyle="bold"
             android:textAllCaps="false"
             android:layout_width="match_parent"

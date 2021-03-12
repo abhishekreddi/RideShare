@@ -6,6 +6,7 @@
 
     <LinearLayout
         android:orientation="vertical"
+        android:background="@drawable/bggg"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -141,8 +142,8 @@
             android:layout_marginTop="30dp"
             android:layout_marginLeft="@dimen/_30sdp"
             android:layout_marginRight="@dimen/_30sdp"
-            android:background="@drawable/button1_rounded"
-            android:textColor="#000"
+            android:background="@drawable/trans"
+            android:textColor="#fff"
             android:textStyle="bold"
             android:textAllCaps="false"
             android:layout_width="match_parent"

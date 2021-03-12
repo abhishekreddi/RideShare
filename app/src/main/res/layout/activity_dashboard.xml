@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@drawable/bggg"
     tools:context=".activities.DashboardActivity">
 
     <Button
@@ -15,11 +16,13 @@
         android:layout_marginLeft="@dimen/_30sdp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="@dimen/_30sdp"
-        android:background="@drawable/button1_rounded"
+        android:drawableTop="@drawable/ic_driver"
+        android:textSize="16dp"
+        android:background="@drawable/trans"
         android:padding="18dp"
         android:text="Driver"
         android:textAllCaps="false"
-        android:textColor="#000"
+        android:textColor="#fff"
         android:textStyle="bold" />
 
     <Button
@@ -29,11 +32,13 @@
         android:layout_marginLeft="@dimen/_30sdp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="@dimen/_30sdp"
-        android:background="@drawable/button1_rounded"
+        android:drawableTop="@drawable/ic_baseline_person_pin_24"
+        android:background="@drawable/trans"
         android:padding="18dp"
-        android:text="Passenger (Student)"
+        android:textSize="16dp"
+        android:text="Passenger"
         android:textAllCaps="false"
-        android:textColor="#000"
+        android:textColor="#fff"
         android:textStyle="bold" />
 
 </LinearLayout>

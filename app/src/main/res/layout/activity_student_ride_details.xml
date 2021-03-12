@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_15sdp"
-                android:layout_marginBottom="@dimen/_2ssp"
+                 android:layout_marginBottom="@dimen/_2ssp"
                 android:fontFamily="@font/poppinsmedium"
                 android:text="@string/app_name"
                 android:textSize="@dimen/_13sdp" />

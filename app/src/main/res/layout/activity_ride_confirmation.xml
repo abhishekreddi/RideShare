@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bggg"
     tools:context=".activities.RideConfirmationActivity">
 
     <TextView
@@ -143,8 +144,8 @@
         android:layout_marginTop="30dp"
         android:layout_marginLeft="70dp"
         android:layout_marginRight="70dp"
-        android:background="@drawable/button1_rounded"
-        android:textColor="#000"
+        android:background="@drawable/trans"
+        android:textColor="#fff"
         android:textStyle="bold"
         android:textAllCaps="false"
         android:layout_width="match_parent"

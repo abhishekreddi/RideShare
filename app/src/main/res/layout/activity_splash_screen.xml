@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="#ffffff"
+    android:background="#000"
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="230dp"
         android:id="@+id/img"
         android:layout_gravity="center"
         android:src="@drawable/logo"
@@ -18,7 +18,7 @@
         android:textSize="30dp"
         android:layout_marginTop="20dp"
         android:textStyle="bold"
-        android:textColor="#FFEB3B"
+        android:textColor="#f4b543"
         android:layout_gravity="center"
         android:textAllCaps="true"
         android:text="welcome"/>
