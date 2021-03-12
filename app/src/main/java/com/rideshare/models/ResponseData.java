@@ -9,6 +9,5 @@ public class ResponseData {
     @SerializedName("status")
     public String status;
 
-    @SerializedName("team_id")
-    public String team_id;
+
 }

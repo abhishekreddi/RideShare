@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPreferences.Editor et=sharedPreferences.edit();
                     et.putString("uname",et_uname.getText().toString());
                     et.commit();
-                    startActivity(new Intent(LoginActivity.this, UserDashBoardActivity.class));
+                    startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
                     finish();
                 } else {
                     Toast.makeText(LoginActivity.this, response.body().message, Toast.LENGTH_LONG).show();

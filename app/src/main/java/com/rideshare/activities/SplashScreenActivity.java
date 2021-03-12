@@ -14,7 +14,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        final int ScreenDisplay = 1500;
+        final int ScreenDisplay = 3000;
         Thread t1=new Thread(){
             int wait1=0;
             public void run(){
@@ -29,8 +29,8 @@ public class SplashScreenActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 finally{
-                    Intent intentg= new Intent(SplashScreenActivity.this, LoginActivity.class);
-                    startActivity(intentg);
+                    Intent in= new Intent(SplashScreenActivity.this, LoginActivity.class);
+                    startActivity(in);
                     finish();
 
                 }

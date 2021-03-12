@@ -1,5 +1,7 @@
 package com.rideshare.activities;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,8 +9,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.rideshare.R;
 import com.rideshare.Utils;
@@ -36,7 +36,7 @@ public class StudentRequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_request);
-        getSupportActionBar().setTitle("Inbox");
+        getSupportActionBar().setTitle("Chat Messages");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -62,7 +62,7 @@ public class StudentRequestActivity extends AppCompatActivity {
                     Toast.makeText(StudentRequestActivity.this,"No data found", Toast.LENGTH_SHORT).show();
                 }else {
                     a1 = response.body();
-                    myRequestAdapter=new StudentRequestAdapter(a1, StudentRequestActivity.this);  //attach adapter class with therecyclerview
+                    myRequestAdapter=new StudentRequestAdapter(a1,StudentRequestActivity.this);  //attach adapter class with therecyclerview
                     list_view.setAdapter(myRequestAdapter);
                 }
             }

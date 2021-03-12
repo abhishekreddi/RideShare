@@ -31,7 +31,7 @@ public class RideConfirmationActivity extends AppCompatActivity {
 
         et_vehicle_no.setText(getIntent().getStringExtra("vehicle"));
         et_no_of_seats.setText(getIntent().getStringExtra("seats"));
-        et_amount.setText(getIntent().getStringExtra("price"));
+        et_amount.setText(getIntent().getStringExtra("price")+" $");
 
         btn_confirm_ride=(Button)findViewById(R.id.btn_confirm_ride);
         btn_confirm_ride.setOnClickListener(new View.OnClickListener() {

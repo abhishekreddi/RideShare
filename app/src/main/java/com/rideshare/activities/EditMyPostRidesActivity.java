@@ -1,5 +1,7 @@
 package com.rideshare.activities;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
@@ -7,16 +9,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.rideshare.R;
 import com.rideshare.Utils;
@@ -50,12 +52,17 @@ public class EditMyPostRidesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_my_post_rides);
 
+        getSupportActionBar().setTitle("Edit Ride");
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
         sharedPreferences = getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
         session = sharedPreferences.getString("uname", "def_val");
 
         getRid=getIntent().getStringExtra("rid");
-        Toast.makeText(this, ""+getRid, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, ""+getRid, Toast.LENGTH_SHORT).show();
 
 
         typeofvehicle=getResources().getStringArray(R.array.CarBrand);
@@ -75,7 +82,7 @@ public class EditMyPostRidesActivity extends AppCompatActivity {
 
         SpinTo = (Spinner) findViewById(R.id.SpinTo);
         int destinationn = new ArrayList<String>(Arrays.asList(destination)).indexOf(getIntent().getStringExtra("destination"));
-        spinFrom.setSelection(destinationn);
+        SpinTo.setSelection(destinationn);
 
 
 
@@ -136,7 +143,7 @@ public class EditMyPostRidesActivity extends AppCompatActivity {
                 progressDialog.dismiss();
                 if (response.body().status.equals("true")) {
                     Toast.makeText(EditMyPostRidesActivity.this, response.body().message, Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(EditMyPostRidesActivity.this, UserDashBoardActivity.class));
+                    startActivity(new Intent(EditMyPostRidesActivity.this,UserDashBoardActivity.class));
                     finish();
                 } else {
                     Toast.makeText(EditMyPostRidesActivity.this, response.body().message, Toast.LENGTH_LONG).show();
@@ -193,5 +200,15 @@ public class EditMyPostRidesActivity extends AppCompatActivity {
         mTimePicker.setTitle("Select Time");
         mTimePicker.show();
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

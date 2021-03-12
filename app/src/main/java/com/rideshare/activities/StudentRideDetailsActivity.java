@@ -95,7 +95,7 @@ public class StudentRideDetailsActivity extends AppCompatActivity {
             public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
                 pd.dismiss();
                 if (response.body().status.equals("true")) {
-                    Toast.makeText(StudentRideDetailsActivity.this, "Ride Booked Succussfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(StudentRideDetailsActivity.this, "Ride Requested Succussfully", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(StudentRideDetailsActivity.this, StudentDashboardActivity.class));
                     finish();
                 } else {

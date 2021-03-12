@@ -1,5 +1,7 @@
 package com.rideshare.activities;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,8 +10,6 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.rideshare.R;
 import com.rideshare.Utils;
@@ -65,12 +65,14 @@ public class DriverInboxActivity extends AppCompatActivity {
 
         ApiService service = RetroClient.getRetrofitInstance().create(ApiService.class);
         Call<List<InboxPojo>> call = service.getDriverInboxRiders(session);//getinboxriders
+
+
         call.enqueue(new Callback<List<InboxPojo>>() {
             @Override
             public void onResponse(Call<List<InboxPojo>> call, Response<List<InboxPojo>> response) {
                 progressDialog.dismiss();
                 if(response.body()==null){
-                    Toast.makeText(DriverInboxActivity.this,"No data found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DriverInboxActivity.this,"No data found",Toast.LENGTH_SHORT).show();
                 }else {
                     inboxPojos=response.body();
                     inboxAdapter =new InboxAdapter(inboxPojos, DriverInboxActivity.this);

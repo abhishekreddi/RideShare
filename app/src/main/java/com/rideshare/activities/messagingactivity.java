@@ -31,8 +31,8 @@ public class messagingactivity extends AppCompatActivity {
     ApiService apiService;
     String frm;
     String eto;
-    String pid="3";
-    List<msgs> msg=new ArrayList<msgs>();
+    String pid = "3";
+    List<msgs> msg = new ArrayList<msgs>();
 
     EditText msgtext;
     ProgressDialog pd;
@@ -40,7 +40,8 @@ public class messagingactivity extends AppCompatActivity {
     Button send;
     Runnable r;
     RecyclerView recyclerView;
-    Handler h=new Handler();
+    Handler h = new Handler();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,38 +49,37 @@ public class messagingactivity extends AppCompatActivity {
 //        getSupportActionBar().setTitle("Chat");
 //        getSupportActionBar().setHomeButtonEnabled(true);
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        msgtext=(EditText)findViewById(R.id.msgtext);
-        send=(Button)findViewById(R.id.send);
+        msgtext = (EditText) findViewById(R.id.msgtext);
+        send = (Button) findViewById(R.id.send);
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(msgtext.getText().toString().isEmpty())
-                {
-                    Toast.makeText(messagingactivity.this,"Please enter message", Toast.LENGTH_SHORT).show();
+                if (msgtext.getText().toString().isEmpty()) {
+                    Toast.makeText(messagingactivity.this, "Please enter message", Toast.LENGTH_SHORT).show();
                 }
-                sendMessage(getIntent().getStringExtra("from"),getIntent().getStringExtra("to"),getIntent().getStringExtra("rid"));
+                sendMessage(getIntent().getStringExtra("from"), getIntent().getStringExtra("to"), getIntent().getStringExtra("rid"));
             }
         });
 
 //        Toast.makeText(messagingactivity.this,getIntent().getStringExtra("pid").toString()+getIntent().getStringExtra("from").toString()+getIntent().getStringExtra("to").toString(), Toast.LENGTH_SHORT).show();
-        frm=getIntent().getStringExtra("from");
-        eto=getIntent().getStringExtra("to");
-        Log.d("checktool",frm+""+eto);
-        recyclerView=findViewById(R.id.messages);
+        frm = getIntent().getStringExtra("from");
+        eto = getIntent().getStringExtra("to");
+        Log.d("checktool", frm + "" + eto);
+        recyclerView = findViewById(R.id.messages);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 //        pd = new ProgressDialog(getApplicationContext());
 //        pd.setTitle("Please wait,Data is being loading.");
 //        pd.show();
 
-        messagesadapter=new messagesadapter(msg,frm,messagingactivity.this);
+        messagesadapter = new messagesadapter(msg, frm, messagingactivity.this);
         recyclerView.setAdapter(messagesadapter);
 
-        r =new Runnable() {
+        r = new Runnable() {
             @Override
             public void run() {
-                h.postDelayed(r,10000);
+                h.postDelayed(r, 10000);
                 getmessages();
 
 
@@ -91,18 +91,18 @@ public class messagingactivity extends AppCompatActivity {
 
     }
 
-    public void getmessages(){
+    public void getmessages() {
         ApiService service = RetroClient.getRetrofitInstance().create(ApiService.class);
-        Call<List<msgs>> call = service.getchat(frm,eto,getIntent().getStringExtra("rid"));
+        Call<List<msgs>> call = service.getchat(frm, eto, getIntent().getStringExtra("rid"));
         call.enqueue(new Callback<List<msgs>>() {
             @Override
             public void onResponse(Call<List<msgs>> call, Response<List<msgs>> response) {
-                if(response.body()==null){
-                    Toast.makeText(messagingactivity.this,"No data found", Toast.LENGTH_SHORT).show();
-                }else {
+                if (response.body() == null) {
+                    Toast.makeText(messagingactivity.this, "No data found", Toast.LENGTH_SHORT).show();
+                } else {
                     // pd.dismiss();
-                    Log.d("testtt",response.toString());
-                    if(response.body().size()>0) {
+                    Log.d("testtt", response.toString());
+                    if (response.body().size() > 0) {
                         msg.clear();
                         msg.addAll(response.body());
                         Log.d("kruthik", msg.toString());
@@ -119,12 +119,13 @@ public class messagingactivity extends AppCompatActivity {
             }
         });
     }
-    public  void sendMessage(final String frm, final String eto, final String rid) {
+
+    public void sendMessage(final String frm, final String eto, final String rid) {
 //        pd = new ProgressDialog(getApplicationContext());
 //        pd.setTitle("Please wait, message sending.");
 //        pd.show();
         ApiService apiService = RetroClient.getRetrofitInstance().create(ApiService.class);
-        Call<ResponseData> call = apiService.msglist(frm,eto,rid,msgtext.getText().toString());
+        Call<ResponseData> call = apiService.msglist(frm, eto, rid, msgtext.getText().toString());
         call.enqueue(new Callback<ResponseData>() {
             @Override
             public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
@@ -144,7 +145,7 @@ public class messagingactivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseData> call, Throwable t) {
-                Log.d("TAG","Response = "+t.toString());
+                Log.d("TAG", "Response = " + t.toString());
             }
         });
     }

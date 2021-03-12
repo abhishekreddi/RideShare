@@ -63,8 +63,8 @@ public class AddCarActivity extends AppCompatActivity implements EasyPermissions
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        sharedPreferences = getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
-        session = sharedPreferences.getString("uname", "def-val");
+         sharedPreferences = getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
+         session = sharedPreferences.getString("uname", "def-val");
 
         spinCarBrand=(Spinner)findViewById(R.id.spinCarBrand);
         SpinCarColour=(Spinner)findViewById(R.id.SpinCarColour);

@@ -1,5 +1,9 @@
 package com.rideshare.activities;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,10 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.rideshare.R;
 import com.rideshare.adapters.messagesadapter;
@@ -70,7 +70,7 @@ public class MessageActivity extends AppCompatActivity {
 //        pd = new ProgressDialog(getApplicationContext());
 //        pd.setTitle("Please wait,Data is being loading.");
 //        pd.show();
-        messagesadapter=new messagesadapter(msg,frm, MessageActivity.this);
+        messagesadapter=new messagesadapter(msg,frm,MessageActivity.this);
         recyclerView.setAdapter(messagesadapter);
 
         r =new Runnable() {
@@ -116,7 +116,7 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
     }
-    public  void sendMessage(final String frm, final String eto, final String rid) {
+    public  void sendMessage(final String frm, final  String eto, final String rid) {
 //        pd = new ProgressDialog(getApplicationContext());
 //        pd.setTitle("Please wait, message sending.");
 //        pd.show();

@@ -1,5 +1,7 @@
 package com.rideshare.activities;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -8,11 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.rideshare.R;
 
@@ -49,23 +50,31 @@ public class SelectSearchOptionsActivity extends AppCompatActivity {
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(et_from.getSelectedItem().toString().equals("Select From")){
+                if (et_from.getSelectedItem().toString().equals("Select From")) {
                     Toast.makeText(SelectSearchOptionsActivity.this, "Please Select From location", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(et_to.getSelectedItem().toString().equals("Choose To")){
+                if (et_to.getSelectedItem().toString().equals("Choose To")) {
                     Toast.makeText(SelectSearchOptionsActivity.this, "Please enter To location", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                Intent intent=new Intent(SelectSearchOptionsActivity.this, SearchrideActivity.class);
-                intent.putExtra("from",et_from.getSelectedItem().toString());
-                intent.putExtra("to",et_to.getSelectedItem().toString());
-                intent.putExtra("date",tvDate.getText().toString());
+
+                if (et_to.getSelectedItem().toString().equals(et_from.getSelectedItem())) {
+                    Toast.makeText(SelectSearchOptionsActivity.this, "From and to should not be the same", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+                Intent intent = new Intent(SelectSearchOptionsActivity.this, SearchrideActivity.class);
+                intent.putExtra("from", et_from.getSelectedItem().toString());
+                intent.putExtra("to", et_to.getSelectedItem().toString());
+                intent.putExtra("date", tvDate.getText().toString());
                 startActivity(intent);
             }
         });
     }
+
     public void datepicker() {
 
         final Calendar c = Calendar.getInstance();

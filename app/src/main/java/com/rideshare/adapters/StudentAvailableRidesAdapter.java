@@ -76,7 +76,7 @@ public class StudentAvailableRidesAdapter extends BaseAdapter {
         ImageView carImage=(ImageView)obj2.findViewById(R.id.carImage);
         Glide.with(cnt).load(URL+availablerides.get(pos).photo).into(carImage);
 
-        TextView tvFrom = (TextView) obj2.findViewById(R.id.tvFrom);
+       TextView tvFrom = (TextView) obj2.findViewById(R.id.tvFrom);
         tvFrom.setText("From : " + availablerides.get(pos).getSource());
 
         TextView tvTo = (TextView) obj2.findViewById(R.id.tvTo);

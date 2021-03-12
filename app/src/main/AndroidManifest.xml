@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rideshare">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -9,25 +10,40 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.AddCarActivity"></activity>
+        <activity android:name=".activities.DriverMessageActivity"></activity>
+        <activity android:name=".activities.DriverRequestActivity" />
+        <activity android:name=".activities.MessageActivity" />
+        <activity android:name=".activities.StudentRequestActivity" />
+        <activity android:name=".activities.UserInboxActivity" />
+        <activity android:name=".activities.UserRideHistoryActivity" />
+        <activity android:name=".activities.MyChatRequestActivity" />
+        <activity android:name=".activities.DashboardActivity" />
+        <activity android:name=".activities.DriverInboxActivity" />
+        <activity android:name=".activities.SelectSearchOptionsActivity" />
+        <activity android:name=".activities.StudentRideDetailsActivity" />
+        <activity android:name=".activities.EditMyPostRidesActivity" />
+        <activity android:name=".activities.EditMyCarDetailsActivity" />
+        <activity android:name=".activities.AddCarActivity" />
         <activity android:name=".activities.CardetailsActivity" />
         <activity android:name=".activities.ForgotPasswordActivity" />
         <activity android:name=".activities.EditProfileActivity" />
+        <activity android:name=".activities.DriverRideHistoryActivity" />
         <activity android:name=".activities.PostaRideActivity" />
         <activity android:name=".activities.RideConfirmationActivity" />
-        <activity android:name=".activities.RidesListActivity" />
+        <activity android:name=".activities.MyPostRidesAActivity" />
         <activity android:name=".activities.SearchrideActivity" />
         <activity android:name=".activities.UserDashBoardActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.messagingactivity" />
         <activity android:name=".activities.MainActivity" />
-        <activity android:name=".activities.StudentRideHistoryActivity"/>
+        <activity android:name=".activities.StudentDashboardActivity" />
         <activity android:name=".activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

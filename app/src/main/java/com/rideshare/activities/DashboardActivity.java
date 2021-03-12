@@ -1,13 +1,13 @@
 package com.rideshare.activities;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.rideshare.R;
 
@@ -18,18 +18,15 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
         getSupportActionBar().setTitle("Dashboard");
         /*getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
-
         btnDriver=(Button)findViewById(R.id.btnDriver);
         btnStudent=(Button)findViewById(R.id.btnStudent);
-
         btnDriver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DashboardActivity.this, UserDashBoardActivity.class));
+                startActivity(new Intent(DashboardActivity.this,UserDashBoardActivity.class));
 
             }
         });
@@ -37,7 +34,7 @@ public class DashboardActivity extends AppCompatActivity {
         btnStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DashboardActivity.this, StudentDashboardActivity.class));
+                startActivity(new Intent(DashboardActivity.this,StudentDashboardActivity.class));
 
             }
         });
@@ -45,7 +42,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.retailer_navigetion, menu);
+        getMenuInflater().inflate(R.menu.dashboard, menu);
         return true;
     }
 

@@ -1,5 +1,7 @@
 package com.rideshare.activities;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,8 +9,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.rideshare.R;
 import com.rideshare.Utils;
@@ -65,7 +65,7 @@ public class MyPostRidesAActivity extends AppCompatActivity {
             public void onResponse(Call<List<MyPostRidesPojo>> call, Response<List<MyPostRidesPojo>> response) {
                 progressDialog.dismiss();
                 if(response.body()==null){
-                    Toast.makeText(MyPostRidesAActivity.this,"No data found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MyPostRidesAActivity.this,"No data found",Toast.LENGTH_SHORT).show();
                 }else {
                     myPostRidesPojos = response.body();
                     list_view.setAdapter(new MyPostRidesAdapter(myPostRidesPojos, MyPostRidesAActivity.this));

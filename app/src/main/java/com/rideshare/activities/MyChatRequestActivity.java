@@ -1,13 +1,15 @@
 package com.rideshare.activities;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.rideshare.R;
+
+import java.util.List;
 
 public class MyChatRequestActivity extends AppCompatActivity {
 

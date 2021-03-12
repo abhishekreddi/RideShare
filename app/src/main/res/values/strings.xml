@@ -15,17 +15,37 @@
         <item>Audi</item>
         <item>Jaguar</item>
     </string-array>
+    <string-array name="status">
+        <item>Select Status</item>
+        <item>Reject</item>
+        <item>Confirmed</item>
+        <item>Completed</item>
+    </string-array>
 
     <string-array name="from">
-        <item>Select Starting Point</item>
-        <item>Xyz</item>
-        <item>Abc</item>
+        <item>Select From</item>
+        <item>Snowdon station</item>
+        <item>plamondon station</item>
+        <item>namur station</item>
+        <item>mcgill station</item>
+        <item>peel station</item>
+        <item>parc station</item>
+        <item>cremazie station</item>
+        <item>lasalle station</item>
+        <item>jarry station</item>
     </string-array>
 
     <string-array name="to">
-        <item>Choose Destination</item>
-        <item>Pqr</item>
-        <item>Tqr</item>
+        <item>Choose To</item>
+        <item>Snowdon station</item>
+        <item>plamondon station</item>
+        <item>namur station</item>
+        <item>mcgill station</item>
+        <item>peel station</item>
+        <item>parc station</item>
+        <item>cremazie station</item>
+        <item>lasalle station</item>
+        <item>jarry station</item>
     </string-array>
 
     <string-array name="noOfSeats">
@@ -33,6 +53,10 @@
         <item>1</item>
         <item>2</item>
         <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+
     </string-array>
 
     <string-array name="carColour">
@@ -49,6 +73,15 @@
     <string name="upload_image">UPLOAD IMAGE</string>
 
     <string name="read_file">This app needs access to your file storage so that it can read photos.</string>
+    <string name="title_activity_user_inbox">UserInboxActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 
 </resources>

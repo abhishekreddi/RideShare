@@ -1,5 +1,12 @@
 package com.rideshare.activities;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
@@ -8,6 +15,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,13 +29,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.rideshare.R;
@@ -64,7 +65,7 @@ public class UserDashBoardActivity extends AppCompatActivity {
     String DAY, MONTH, YEAR;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle  savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dash_board);
 
@@ -150,6 +151,12 @@ public class UserDashBoardActivity extends AppCompatActivity {
                     Toast.makeText(UserDashBoardActivity.this, "please enter amount", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                int pos=spinTypeofVehicle.getSelectedItemPosition()-1;
+                if(Integer.parseInt(et_no_of_seats.getText().toString())>Integer.parseInt(carname.get(pos).getSeats()))
+                {
+                    Toast.makeText(getApplicationContext(),"Entered seats are exceed than actual seats",Toast.LENGTH_SHORT).show();
+                }
+                //Toast.makeText(getApplicationContext(),carname.get(pos).getSeats(),Toast.LENGTH_SHORT).show();
                 PostaRide();
             }
         });
@@ -262,10 +269,21 @@ public class UserDashBoardActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.driver, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (dl.isDrawerOpen(GravityCompat.START)) {
             dl.closeDrawer(GravityCompat.START);
+        }
+        if (id == R.id.driverDashboard) {
+            Intent logout = new Intent(getApplicationContext(), StudentDashboardActivity.class);
+            startActivity(logout);
+
         } else {
             dl.openDrawer(GravityCompat.START);
         }
@@ -273,7 +291,7 @@ public class UserDashBoardActivity extends AppCompatActivity {
     }
 
     ArrayList<String> cid;
-
+     List<CarDetailsPojo> carname;
     private void getCarNames() {
         ApiService apiService = RetroClient.getRetrofitInstance().create(ApiService.class);
         Call<List<CarDetailsPojo>> call = apiService.getmycars(session);
@@ -281,7 +299,7 @@ public class UserDashBoardActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<CarDetailsPojo>> call, Response<List<CarDetailsPojo>> response) {
                 if (response.isSuccessful()) {
-                    final List<CarDetailsPojo> carname = response.body();
+                    carname = response.body();
                     if (carname != null) {
                         if (carname.size() > 0) {
                             ArrayList<String> cname = new ArrayList<String>();

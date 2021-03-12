@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -57,9 +58,9 @@ public class StudentDashboardActivity extends AppCompatActivity {
 
 
         sharedPreferences = getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
-         session = sharedPreferences.getString("uname", "def-val");
+        session = sharedPreferences.getString("uname", "def-val");
 
-        btnSearch=(Button)findViewById(R.id.btnSearch);
+        btnSearch = (Button) findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,13 +68,14 @@ public class StudentDashboardActivity extends AppCompatActivity {
             }
         });
 
-        list_view=(ListView)findViewById(R.id.list_view);
+        list_view = (ListView) findViewById(R.id.list_view);
 
-        ridesListPojo=new ArrayList<>();
+        ridesListPojo = new ArrayList<>();
         getAvailableRides();
 
     }
-    public void getAvailableRides(){
+
+    public void getAvailableRides() {
         progressDialog = new ProgressDialog(StudentDashboardActivity.this);
         progressDialog.setMessage("Loading....");
         progressDialog.show();
@@ -84,15 +86,16 @@ public class StudentDashboardActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<RidesListPojo>> call, Response<List<RidesListPojo>> response) {
                 progressDialog.dismiss();
-                if(response.body()==null){
-                    Toast.makeText(StudentDashboardActivity.this,"No data found", Toast.LENGTH_SHORT).show();
-                }else {
-                    ridesListPojo=response.body();
-                    studentAvailableRidesAdapter =new StudentAvailableRidesAdapter(ridesListPojo, StudentDashboardActivity.this);
+                if (response.body() == null) {
+                    Toast.makeText(StudentDashboardActivity.this, "No data found", Toast.LENGTH_SHORT).show();
+                } else {
+                    ridesListPojo = response.body();
+                    studentAvailableRidesAdapter = new StudentAvailableRidesAdapter(ridesListPojo, StudentDashboardActivity.this);
                     list_view.setAdapter(studentAvailableRidesAdapter);
 
                 }
             }
+
             @Override
             public void onFailure(Call<List<RidesListPojo>> call, Throwable t) {
                 progressDialog.dismiss();
@@ -100,6 +103,7 @@ public class StudentDashboardActivity extends AppCompatActivity {
             }
         });
     }
+
     private void navigationView() {
         dl = (DrawerLayout) findViewById(R.id.activity_main);
         t = new ActionBarDrawerToggle(this, dl, R.string.Open, R.string.Close);
@@ -125,6 +129,7 @@ public class StudentDashboardActivity extends AppCompatActivity {
                         Intent add_car = new Intent(getApplicationContext(), StudentRequestActivity.class);
                         startActivity(add_car);
                         break;
+
 
                     case R.id.edit_profile:
                         Intent view_jobs = new Intent(getApplicationContext(), EditProfileActivity.class);
@@ -161,15 +166,28 @@ public class StudentDashboardActivity extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.user, menu);
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (dl.isDrawerOpen(GravityCompat.START)) {
             dl.closeDrawer(GravityCompat.START);
+        }
+        if (id == R.id.driverDashboard) {
+            Intent logout = new Intent(getApplicationContext(), UserDashBoardActivity.class);
+            startActivity(logout);
+
         } else {
             dl.openDrawer(GravityCompat.START);
         }
         return super.onOptionsItemSelected(item);
     }
+
 
 }

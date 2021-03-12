@@ -1,12 +1,16 @@
 package com.rideshare.adapters;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,10 +19,12 @@ import com.bumptech.glide.Glide;
 import com.rideshare.R;
 import com.rideshare.activities.CardetailsActivity;
 import com.rideshare.activities.EditMyCarDetailsActivity;
+import com.rideshare.activities.ForgotPasswordActivity;
 import com.rideshare.api.ApiService;
 import com.rideshare.api.RetroClient;
 import com.rideshare.models.CarDetailsPojo;
 import com.rideshare.models.ResponseData;
+
 
 import java.util.List;
 
@@ -69,7 +75,7 @@ public class CarDetailsAdapter extends BaseAdapter {
         ImageView imageView=(ImageView)obj2.findViewById(R.id.imageView);
         Glide.with(cnt).load(imgUrl+mycardetails.get(pos).getPhoto()).into(imageView);
 
-        ImageView imageEdit=(ImageView)obj2.findViewById(R.id.imageEdit);
+        Button imageEdit=(Button)obj2.findViewById(R.id.imageEdit);
         imageEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +90,7 @@ public class CarDetailsAdapter extends BaseAdapter {
 
             }
         });
-        ImageView imageDelete=(ImageView)obj2.findViewById(R.id.imageDelete);
+        Button imageDelete=(Button)obj2.findViewById(R.id.imageDelete);
         imageDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,11 +116,11 @@ public class CarDetailsAdapter extends BaseAdapter {
             public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
                 progressDialog.dismiss();
                 if(response.body()==null){
-                    Toast.makeText(cnt,"Server issue", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(cnt,"Server issue",Toast.LENGTH_SHORT).show();
                 }else {
                     Intent intent=new Intent(cnt, CardetailsActivity.class);
                     cnt.startActivity(intent);
-                    Toast.makeText(cnt," Deleted successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(cnt," Deleted successfully",Toast.LENGTH_SHORT).show();
 
                 }
             }

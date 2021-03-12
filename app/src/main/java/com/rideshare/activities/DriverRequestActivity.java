@@ -1,7 +1,8 @@
 package com.rideshare.activities;
 
-import android.app.ProgressDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,10 +10,9 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.rideshare.R;
 import com.rideshare.Utils;
+import com.rideshare.adapters.MyRequestAdapter;
 import com.rideshare.api.ApiService;
 import com.rideshare.api.RetroClient;
 import com.rideshare.models.msgs;
@@ -23,32 +23,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-public class DriverRequestActivity extends AppCompatActivity package com.rideshare.activities;
-
-        import androidx.appcompat.app.AppCompatActivity;
-
-        import android.app.ProgressDialog;
-        import android.content.Context;
-        import android.content.SharedPreferences;
-        import android.os.Bundle;
-        import android.view.MenuItem;
-        import android.widget.ListView;
-        import android.widget.Toast;
-
-        import com.rideshare.R;
-        import com.rideshare.Utils;
-        import com.rideshare.adapters.MyRequestAdapter;
-        import com.rideshare.api.ApiService;
-        import com.rideshare.api.RetroClient;
-        import com.rideshare.models.msgs;
-
-        import java.util.ArrayList;
-        import java.util.List;
-
-        import retrofit2.Call;
-        import retrofit2.Callback;
-        import retrofit2.Response;
 
 public class DriverRequestActivity extends AppCompatActivity {
 

@@ -80,26 +80,28 @@ public class RegisterActivity extends AppCompatActivity implements EasyPermissio
             }
         });
 
-
         genderSelect();
         bt_reg=(Button)findViewById(R.id.bt_reg);
         bt_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
-                //password length
                 if(et_name.getText().toString().isEmpty()){
-                    Toast.makeText(RegisterActivity.this, "Please Enter Valid Username", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Please enter name", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(et_password.getText().toString().isEmpty()){
-                    Toast.makeText(RegisterActivity.this, "Please Enter Valid Password", Toast.LENGTH_SHORT).show();
+                if(et_email.getText().toString().isEmpty()){
+                    Toast.makeText(RegisterActivity.this, "Please enter email", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(et_password.getText().toString().length()<8){
-                    Toast.makeText(RegisterActivity.this, "Please Enter Password more than 8 characters", Toast.LENGTH_SHORT).show();
+                if(et_phone_no.getText().toString().isEmpty()){
+                    Toast.makeText(RegisterActivity.this, "Please enter phone no", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(et_password.getText().toString().length() <=  6){
+                    Toast.makeText(RegisterActivity.this, "Password should be morethen 6 characters", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
 
                 uploadImageToServer();
             }
@@ -151,7 +153,7 @@ public class RegisterActivity extends AppCompatActivity implements EasyPermissio
 
     private void uploadImageToServer() {
         pd = new ProgressDialog(RegisterActivity.this);
-        pd.setTitle("Loading...");
+        pd.setTitle("Loading");
         pd.show();
         Map<String, String> map = new HashMap<>();
         map.put("name", et_name.getText().toString());
@@ -175,7 +177,7 @@ public class RegisterActivity extends AppCompatActivity implements EasyPermissio
             @Override
             public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
                 pd.dismiss();
-                Toast.makeText(RegisterActivity.this, "Registeration successfully done.. ", Toast.LENGTH_LONG).show();
+                Toast.makeText(RegisterActivity.this, "Registered successfully. ", Toast.LENGTH_LONG).show();
                 finish();
             }
 

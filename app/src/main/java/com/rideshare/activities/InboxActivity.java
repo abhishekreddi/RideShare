@@ -13,9 +13,12 @@ import android.widget.Toast;
 
 import com.rideshare.R;
 import com.rideshare.Utils;
+import com.rideshare.adapters.InboxAdapter;
+import com.rideshare.adapters.StudentAvailableRidesAdapter;
 import com.rideshare.api.ApiService;
 import com.rideshare.api.RetroClient;
 import com.rideshare.models.InboxPojo;
+import com.rideshare.models.RidesListPojo;
 
 import java.util.ArrayList;
 import java.util.List;

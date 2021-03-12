@@ -146,6 +146,9 @@ public interface ApiService {
             @Query("status") String status);
 
 
+
+
+
     @GET("rideshare/search.php?")
     Call<List<SearchDetailsPojo>> searchrides(
             @Query("email") String email,
@@ -154,15 +157,15 @@ public interface ApiService {
             @Query("dat") String dat);
 
     @GET("/rideshare/chat.php")
-    Call<ResponseData> msglist(@Query("frm") String frm ,
-                               @Query("eto") String eto ,
+    Call<ResponseData> msglist(@Query("frm") String frm,
+                               @Query("eto") String eto,
                                @Query("rid") String rid,
                                @Query("message") String message);
 
     @GET("/rideshare/getchat.php")
     Call<List<msgs>> getchat(@Query("frm") String from,
                              @Query("eto") String to,
-                             @Query("rid") String rid );
+                             @Query("rid") String rid);
 
 
     @GET("/rideshare/studentrequests.php?")

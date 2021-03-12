@@ -2,9 +2,11 @@ package com.rideshare.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -76,8 +78,13 @@ public class SearchrideActivity extends AppCompatActivity {
             public void onResponse(Call<List<SearchDetailsPojo>> call, Response<List<SearchDetailsPojo>> response) {
                 //Toast.makeText(SearchrideActivity.this, ""+response.body().size(), Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
-                if(response.body()==null){
+                if(response.body()== null){
                     Toast.makeText(SearchrideActivity.this,"No data found",Toast.LENGTH_SHORT).show();
+                }
+                else if(response.body().size() <=0){
+                    //Toast.makeText(SearchrideActivity.this,"No data found",Toast.LENGTH_SHORT).show();
+
+                    alertView("No ride date Found");
                 }else {
                     searchDetailsPojo = response.body();
                     list_view.setAdapter(new SearchAdapter(searchDetailsPojo, SearchrideActivity.this));
@@ -101,5 +108,17 @@ public class SearchrideActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+    private void alertView( String message ) {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(SearchrideActivity.this);
+        dialog.setTitle( "Ride Info" )
+                .setIcon(R.drawable.logo)
+                .setMessage(message)
+
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialoginterface, int i) {
+                        dialoginterface.cancel();
+                    }
+                }).show();
     }
 }
